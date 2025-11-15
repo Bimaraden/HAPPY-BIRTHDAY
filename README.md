@@ -8,12 +8,10 @@
 
 ```typescript
 const photos: PhotoItem[] = [
-  { id: 1, src: '/photos/foto1.png', label: 'Foto 1' },
-  { id: 2, src: '/photos/foto2.png', label: 'Foto 2' },
-  { id: 3, src: '/photos/foto3.png', label: 'Foto 3' },
-  { id: 4, src: '/photos/foto4.png', label: 'Foto 4' },
-  { id: 5, src: '/photos/foto5.png', label: 'Foto 5' },
-  { id: 6, src: '/photos/foto6.png', label: 'Foto 6' },
+  { id: 1, src: '/photos/images.png', label: 'Foto 1' },
+  { id: 2, src: '/photos/images.png', label: 'Foto 2' },
+  { id: 3, src: '/photos/images.png', label: 'Foto 3' },
+  { id: 4, src: '/photos/images.png', label: 'Foto 4' },
 ];
 ```
 
