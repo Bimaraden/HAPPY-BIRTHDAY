@@ -5,15 +5,17 @@ function LetterCard() {
   const [isOpen, setIsOpen] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
 
-  const letterContent = `Halo Asha yang ceria dan hebat! 🌟
-Di hari spesial ini, Kaka ingin mengucapkan selamat ulang tahun yang penuh dengan kebahagiaan dan semua hal baik yang kamu impikan.
+  // Isi surat spesial dengan pesan personal
+  const letterContent = `Halo Anda yang spesial! 🌟
 
-Semoga tahun ini membawa banyak kebahagiaan, pencapaian yang membanggakan, dan momen-momen tak terlupakan. Kamu pantas mendapatkan semua yang terbaik di dunia ini karena kamu adalah orang yang luar biasa.
-Terima kasih sudah menjadi dirimu yang indah, ceria, dan menyenangkan. Kehadiranmu membuat suasana di sekitar kamu menjadi lebih baik dan penuh warna.
+Aku ingin mengucapkan selamat ulang tahun untuk Anda hari ini. Ini adalah momen istimewa untuk orang yang istimewa seperti Anda.
 
-Selamat ulang tahun sekali lagi! Semoga hari ini dan setiap hari ke depannya dipenuhi dengan senyuman, tawa, dan kebahagiaan yang tak ada habisnya.
+Anda adalah orang yang selalu membawa kebahagiaan dan tawa ke dalam kehidupan kami. Kepribadian yang hangat dan hati yang tulus membuat dunia menjadi tempat yang lebih cerah dan lebih baik.
 
-Dari Kaka dengan doa terbaik, ✨`;
+Semoga tahun ini membawa lebih banyak kebahagiaan, kesuksesan yang luar biasa, dan semua mimpi-mimpi indah Anda menjadi kenyataan. Terima kasih telah menjadi bagian yang berarti dalam hidup kami.
+
+Dengan kasih sayang yang tulus,
+Orang-orang yang menyayangimu ✨`;
 
   useEffect(() => {
     if (!isOpen) {
@@ -36,12 +38,14 @@ Dari Kaka dengan doa terbaik, ✨`;
 
   return (
     <div className="max-w-2xl mx-auto mb-12">
+      {/* Header */}
       <div className="flex items-center justify-center gap-3 mb-8">
         <Mail className="w-8 h-8 text-purple-500" />
         <h2 className="text-3xl font-bold text-pink-600">Surat Spesial</h2>
         <Mail className="w-8 h-8 text-purple-500" />
       </div>
 
+      {/* Amplop atau Surat */}
       <div className="relative">
         {!isOpen ? (
           <div
@@ -57,14 +61,16 @@ Dari Kaka dengan doa terbaik, ✨`;
           </div>
         ) : (
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden animate-fade-in">
+            {/* Header surat */}
             <div className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 p-6">
               <div className="flex items-center justify-center gap-2 text-white">
                 <Heart className="w-6 h-6 fill-white" />
-                <h3 className="text-2xl font-bold">Untuk Ashadewi aryani prasojo</h3>
+                <h3 className="text-2xl font-bold">Untuk Anda</h3>
                 <Heart className="w-6 h-6 fill-white" />
               </div>
             </div>
 
+            {/* Isi surat dengan typing effect */}
             <div className="p-8 max-h-96 overflow-y-auto">
               <div className="whitespace-pre-wrap text-gray-700 leading-relaxed font-medium">
                 {displayedText}
@@ -74,6 +80,7 @@ Dari Kaka dengan doa terbaik, ✨`;
               </div>
             </div>
 
+            {/* Footer dengan emoji animasi */}
             <div className="bg-gradient-to-r from-pink-100 to-purple-100 p-6">
               <div className="flex justify-center gap-3 text-3xl">
                 <span className="animate-pulse">💖</span>

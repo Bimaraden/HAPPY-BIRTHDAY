@@ -13,32 +13,38 @@ interface Song {
 }
 
 function BirthdayPage() {
+  // State untuk manage animasi dan UI
   const [showConfetti, setShowConfetti] = useState(true);
   const [showSurprise, setShowSurprise] = useState(false);
   const [titleText, setTitleText] = useState('');
-  const fullTitle = 'Selamat Ulang Tahun, Asha! 🎉💖';
+  
+  const fullTitleText = 'Selamat Ulang Tahun, Anda!';
+  const fullTitleEmoji = ' 🎉💖';
+  const fullTitle = fullTitleText + fullTitleEmoji;
 
+  // Daftar lagu untuk dimainkan
   const songs: Song[] = [
     {
-    id: 1,
-    title: 'Memori',
-    artist: 'Maliq & D Essentials',
-    url: '/audio/lagu1.mp3',
-  },
-  {
-    id: 2,
-    title: 'Serta Mulia',
-    artist: 'Sal Priadi',
-    url: '/audio/lagu2.mp3',
-  },
-  {
-    id: 3,
-    title: 'Amin Paling Serius',
-    artist: 'Sal Priadi & Nadin Amizah',
-    url: '/audio/lagu3.mp3',
-  },
+      id: 1,
+      title: 'Memori',
+      artist: "Maliq & D'Essentials",
+      url: '/audio/lagu1.mp3',
+    },
+    {
+      id: 2,
+      title: 'Serta Mulia',
+      artist: 'Sal Priadi',
+      url: '/audio/lagu2.mp3',
+    },
+    {
+      id: 3,
+      title: 'Amin Paling Serius',
+      artist: "Sal Priadi & Nadin Amizah",
+      url: '/audio/lagu3.mp3',
+    },
   ];
 
+  // Effect untuk animasi title typing
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -50,14 +56,18 @@ function BirthdayPage() {
       }
     }, 100);
 
+    // Hentikan confetti setelah 8 detik
     setTimeout(() => setShowConfetti(false), 8000);
 
     return () => clearInterval(timer);
   }, []);
 
+  // Handle klik tombol kejutan
   const handleSurprise = () => {
     setShowSurprise(true);
     setShowConfetti(true);
+    
+    // Hilangkan setelah 5 detik
     setTimeout(() => {
       setShowSurprise(false);
       setShowConfetti(false);
@@ -66,8 +76,10 @@ function BirthdayPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 relative overflow-hidden">
+      {/* Confetti animation */}
       {showConfetti && <Confetti />}
 
+      {/* Floating balloons */}
       <div className="floating-balloons">
         <div className="balloon balloon-1">🎈</div>
         <div className="balloon balloon-2">🎈</div>
@@ -76,7 +88,9 @@ function BirthdayPage() {
         <div className="balloon balloon-5">🎈</div>
       </div>
 
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
+        {/* Header dengan Bear dan Heart */}
         <div className="text-center mb-12">
           <div className="mb-8 flex justify-center">
             <div className="relative animate-bounce-slow">
@@ -85,21 +99,32 @@ function BirthdayPage() {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent mb-4 min-h-[4rem]">
-            {titleText}
+          {/* Judul dengan efek gradient */}
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 min-h-[4rem]">
+            <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+              {titleText.slice(0, fullTitleText.length)}
+            </span>
+            <span className="ml-2">
+              {titleText.slice(fullTitleText.length)}
+            </span>
           </h1>
 
+          {/* Sub-judul */}
           <p className="text-xl text-gray-600 mb-8">
             Hari spesial untuk orang yang spesial 💝
           </p>
         </div>
 
+        {/* Galeri foto */}
         <PhotoGallery />
 
+        {/* Music player */}
         <MusicPlayer songs={songs} />
 
+        {/* Surat spesial */}
         <LetterCard />
 
+        {/* Tombol kejutan */}
         <div className="text-center mt-12">
           <button
             onClick={handleSurprise}
@@ -111,12 +136,13 @@ function BirthdayPage() {
           </button>
         </div>
 
+        {/* Surprise animation */}
         {showSurprise && (
           <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
             <div className="text-center animate-bounce-in">
               <div className="text-9xl mb-4">🎊</div>
               <h2 className="text-5xl font-bold text-pink-500 bg-white px-8 py-4 rounded-full shadow-2xl">
-                Asha is the best 💕
+                Anda adalah yang terbaik 💕
               </h2>
               <div className="mt-4 flex justify-center gap-4">
                 <span className="text-6xl animate-spin-slow">✨</span>
@@ -127,6 +153,7 @@ function BirthdayPage() {
           </div>
         )}
 
+        {/* Footer dengan emoji animasi */}
         <div className="mt-16 text-center">
           <div className="flex justify-center gap-4 text-5xl">
             <span className="animate-wiggle">🎁</span>
